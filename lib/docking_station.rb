@@ -7,3 +7,13 @@ class DockingStation
 	end
 
 end
+
+=begin
+
+p station = DockingStation.new
+p bike = station.release_bike
+p bike.working?
+p station.dock(bike)
+p station.bike
+
+=end
