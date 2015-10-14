@@ -13,13 +13,17 @@ describe DockingStation do
   end
 
   it { is_expected.to respond_to(:dock).with(1) }
-  it { is_expected.to respond_to(:bike) }
+  it { is_expected.to respond_to(:bikes) }
 
   it 'raises error when there are no more bikes available' do
     expect {subject.release_bike}.to raise_error("No bikes available")
   end
 
-  # it 'refuses to dock bike when already at capacity' do
-  #   expect {subject.dock(:bike)}.to raise_error("Already full")
-  # end
+   it 'refuses to dock bike when already at capacity' do
+     20.times { subject.dock Bike.new }
+     expect { subject.dock Bike.new }.to raise_error("Already full")
+   end
+
+
+end
 
