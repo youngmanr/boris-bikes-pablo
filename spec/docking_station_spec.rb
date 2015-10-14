@@ -1,6 +1,11 @@
 require 'docking_station'
 
 describe DockingStation do
+  #method here??
+  bike_overflow = DockingStation.new
+  10.times do
+    bike_overflow.release_bike
+  end
 
   it { is_expected.to respond_to :release_bike }
 
@@ -12,8 +17,11 @@ describe DockingStation do
   it { is_expected.to respond_to(:dock).with(1) }
   it { is_expected.to respond_to(:bike) }
 
-end
+  it 'raises error on no bikes available' do
+    expect {bike_overflow.release_bike}.to raise_error("No bikes available")
+  end
 
+end
 
 
 
