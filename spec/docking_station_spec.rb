@@ -8,7 +8,7 @@ describe DockingStation do
     end
 
     subject { DockingStation.new }
-    let(:bike) { Bike.new}
+    let(:bike) { double(:bike) }
     it 'defaults capacity' do
       described_class::DEFAULT_CAPACITY.times do
         subject.dock(bike)
@@ -18,8 +18,7 @@ describe DockingStation do
   end 
 
   describe '#release_bike' do
-    let(:bike) { Bike.new}
-    let(:bike_broken) { Bike.new(false)}
+    let(:bike) { double(:bike) }
     it { is_expected.to respond_to :release_bike }
 
     it 'releases a bike' do
@@ -34,9 +33,9 @@ describe DockingStation do
   end
 
   describe '#dock' do
-    let(:bike) { Bike.new }
+    let(:bike) { double(:bike) }
     
-    it { is_expected.to respond_to(:dock).with(2) }
+    it { is_expected.to respond_to(:dock).with(1) }
   
     it 'refuses to dock bike when already at capacity' do
       subject.capacity.times { subject.dock bike }
