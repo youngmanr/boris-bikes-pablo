@@ -12,12 +12,14 @@ class DockingStation
 
   def release_bike
     fail 'No bikes available' if empty?
+    fail "cannot release a broken bike" unless bikes.last.working
     bikes.pop
   end
 
-  def dock(bike)
+  def dock(bike, working=true)
     fail 'Already full' if full?
     bikes << bike
+    "This bike is broken" if working == false
   end
   
   private
@@ -29,7 +31,7 @@ class DockingStation
   end
 
   def full?
-    bikes.length >= DEFAULT_CAPACITY
+    bikes.length >= capacity
   end
 end
 

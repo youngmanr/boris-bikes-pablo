@@ -18,10 +18,11 @@ describe DockingStation do
   end 
 
   describe '#release_bike' do
+    let(:bike) { Bike.new}
+    let(:bike_broken) { Bike.new(false)}
     it { is_expected.to respond_to :release_bike }
 
     it 'releases a bike' do
-      bike = Bike.new
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
     end
@@ -29,15 +30,27 @@ describe DockingStation do
     it 'raises error when there are no more bikes available' do
       expect {subject.release_bike}.to raise_error("No bikes available")
     end
+
+    #it 'raises an error if the bike is broken' do
+    #  subject.dock(bike_broken)
+    #  expect {subject.release_bike}.to raise_error("cannot release a broken bike")
+    #end
   end
 
   describe '#dock' do
-    it { is_expected.to respond_to(:dock).with(1) }
+    let(:bike) { Bike.new }
+    
+    it { is_expected.to respond_to(:dock).with(2) }
   
     it 'refuses to dock bike when already at capacity' do
-      subject.capacity.times { subject.dock Bike.new }
-      expect { subject.dock Bike.new }.to raise_error("Already full")
-   end
+      subject.capacity.times { subject.dock bike }
+      expect { subject.dock bike }.to raise_error("Already full")
+    end
+    
+    it 'receives a report if bike is not working' do
+     expect(subject.dock(bike, false)).to eq ("This bike is broken")
+    end
+
   end
  
 end
