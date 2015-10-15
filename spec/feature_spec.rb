@@ -1,5 +1,5 @@
 station = DockingStation.new
-bike = Bike.new(false)
+bike = Bike.new
 # p bike2 = Bike.new
 # p station.dock(bike)
 # p station.dock(bike2)
