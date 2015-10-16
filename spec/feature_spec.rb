@@ -14,3 +14,7 @@
 # p '------------------'
 # p 'test whether broken bikes can be released'
 # #p station.release_bike
+#p broken_bike = docking_station.release(broken_bike)
+#p van.dock(broken_bike)
+#p broken_bike = van.release(broken_bike)
+#p garage.dock(broken_bike)
