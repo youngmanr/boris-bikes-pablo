@@ -17,6 +17,13 @@ describe Garage do
     end
   end
 
+
+  describe 'container' do
+    it_behaves_like 'bikeContainer'
+  end
+
+
+=begin
   describe '#release_bike' do
     it { is_expected.to respond_to :release_bike }
 
@@ -37,6 +44,7 @@ describe Garage do
     end
 
   end
+=end
 
   describe '#dock' do
     let(:bike) { double(:bike) }

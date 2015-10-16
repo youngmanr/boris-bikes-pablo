@@ -15,8 +15,12 @@ describe DockingStation do
       end
       expect{ subject.dock(bike) }.to raise_error 'Already full'
     end
-  end 
+  end
 
+  describe 'container' do
+    it_behaves_like 'bikeContainer'
+  end
+=begin
   describe '#release_bike' do
     #let(:bike) { double(:bike) }
     it { is_expected.to respond_to :release_bike }
@@ -38,17 +42,18 @@ describe DockingStation do
     end
 
   end
+=end
 
   describe '#dock' do
     let(:bike) { double(:bike) }
-    
+
     it { is_expected.to respond_to(:dock).with(1) }
-  
+
     it 'refuses to dock bike when already at capacity' do
       subject.capacity.times { subject.dock bike }
       expect { subject.dock bike }.to raise_error("Already full")
     end
   end
- 
+
 end
 

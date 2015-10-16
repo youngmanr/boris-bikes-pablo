@@ -1,6 +1,8 @@
 require_relative 'bike'
+require_relative 'bikeContainer'
 
 class Garage
+  include BikeContainer
   attr_accessor :capacity
   DEFAULT_CAPACITY = 20
 
@@ -9,11 +11,13 @@ class Garage
     @capacity = capacity
   end
 
+=begin
   def release_bike
     fail 'No bikes available' if empty?
     fail "cannot release a broken bike" if bikes.last.broken?
     bikes.pop
   end
+=end
 
   def dock(bike)
     fail 'Already full' if full?
