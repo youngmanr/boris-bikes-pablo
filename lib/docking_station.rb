@@ -16,6 +16,13 @@ class DockingStation
     bikes.pop
   end
 
+  def release_broken_bike
+    broken_bike = nil
+    broken_bike = bikes.select { |bike| bike.broken? }.last
+    bikes.delete(broken_bike)
+    broken_bike
+  end
+
   def dock(bike)
     fail 'Already full' if full?
     bikes << bike
