@@ -18,3 +18,7 @@
 #p van.dock(broken_bike)
 #p broken_bike = van.release(broken_bike)
 #p garage.dock(broken_bike)
+#bike = garage.release_bike
+#van.dock(bike)
+#bike = van.release_bike
+#station.dock(bike)
