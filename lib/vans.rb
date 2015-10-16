@@ -13,14 +13,12 @@ class Van
   
   def release_bike
     fail 'No bikes available' if empty?
-    working_bike = nil
-    working_bike = bikes.select { |bike| !bike.broken? }.last
-	bikes.delete(working_bike)
 	fail "cannot release a broken bike" if bikes.last.broken?
-	working_bike
+	bikes.pop
   end
 
   def release_broken_bike
+  	fail "cannot release a working bike" if !bikes.last.broken?
   	broken_bike = nil
 	broken_bike = bikes.select { |bike| bike.broken? }.last
 	bikes.delete(broken_bike)
