@@ -9,10 +9,6 @@ describe Garage do
 
     subject { Garage.new }
     let(:bike) { double(:bike) }
-    #bike = double(:bike, fix_bike:)
-    #allow(bike).to receive(:working=).with(true).and_return(true)
-    #allow(bike).to receive(:working?).and_return(true)
-    #allow(bike).to receive(:fix_bike).and_return(false)
     it 'defaults capacity' do
       allow(bike).to receive(:fix_bike).and_return(false)
       described_class::DEFAULT_CAPACITY.times do
